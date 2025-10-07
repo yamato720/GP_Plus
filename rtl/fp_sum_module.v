@@ -18,7 +18,11 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-module fp_sum_module(
+module fp_sum_module
+#(
+    parameter latency = 4'd5 //执行全部my_fp_add延迟周期
+)
+(
     input   wire            aclk            ,
     input   wire            aresetn         , 
         
@@ -51,7 +55,6 @@ module fp_sum_module(
 
 
 
-parameter latency = 4'd5; // 总延迟5个时钟周期
 
 wire    [31:0]  result_21_A ;
 wire    [31:0]  result_21_B ;

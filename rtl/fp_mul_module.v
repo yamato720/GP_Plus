@@ -20,9 +20,101 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fp_mul_module(
+module fp_mul_module
+#(
+    parameter   RST_MAX     = 8'd255    ,
+    parameter   SUM_START   = 8'd64     
+)
+(
+    input   wire            sys_clk_1   ,
+    input   wire            sys_clk_2   ,
+    input   wire            sys_rst_n   ,
+    input   wire    [31:0]  in_A        ,
+    input   wire    [31:0]  in_B        ,
+    input   wire            finish      ,
+    input   wire            in_valid    ,
+    input   wire            in_acc_sign ,
+    
+    output  wire    [31:0]  result_1_A  ,
+    output  wire    [31:0]  result_1_B  ,
+    output  wire    [31:0]  result_2_A  ,
+    output  wire    [31:0]  result_2_B  ,
+    output  wire    [31:0]  result_3_A  ,
+    output  wire    [31:0]  result_3_B  ,
+    output  wire    [31:0]  result_4_A  ,
+    output  wire    [31:0]  result_4_B  ,
+    output  wire    [31:0]  result_5_A  ,
+    output  wire    [31:0]  result_5_B  ,
+    output  wire    [31:0]  result_6_A  ,
+    output  wire    [31:0]  result_6_B  ,
+    output  wire    [31:0]  result_7_A  ,
+    output  wire    [31:0]  result_7_B  ,
+    output  wire    [31:0]  result_8_A  ,
+    output  wire    [31:0]  result_8_B  ,
+    
+    output  wire            acc_sign    ,
+    output  wire            clock_en_out,   
+    output  wire            sendable    ,
+    
+    output  wire            save_sign   
+   
 
-    );
+);
+
+wire    [31:0]  out_01_A    ; 
+wire    [31:0]  out_01_B    ; 
+wire    [31:0]  out_02_A    ; 
+wire    [31:0]  out_02_B    ; 
+wire    [31:0]  out_03_A    ; 
+wire    [31:0]  out_03_B    ; 
+wire    [31:0]  out_04_A    ; 
+wire    [31:0]  out_04_B    ; 
+wire    [31:0]  out_05_A    ; 
+wire    [31:0]  out_05_B    ; 
+wire    [31:0]  out_06_A    ; 
+wire    [31:0]  out_06_B    ; 
+wire    [31:0]  out_07_A    ; 
+wire    [31:0]  out_07_B    ; 
+wire    [31:0]  out_08_A    ; 
+wire    [31:0]  out_08_B    ; 
+wire    [31:0]  out_09_A    ; 
+wire    [31:0]  out_09_B    ; 
+wire    [31:0]  out_10_A    ; 
+wire    [31:0]  out_10_B    ; 
+wire    [31:0]  out_11_A    ; 
+wire    [31:0]  out_11_B    ; 
+wire    [31:0]  out_12_A    ; 
+wire    [31:0]  out_12_B    ; 
+wire    [31:0]  out_13_A    ; 
+wire    [31:0]  out_13_B    ; 
+wire    [31:0]  out_14_A    ; 
+wire    [31:0]  out_14_B    ; 
+wire    [31:0]  out_15_A    ; 
+wire    [31:0]  out_15_B    ; 
+wire    [31:0]  out_16_A    ; 
+wire    [31:0]  out_16_B    ; 
+
+wire            clock_en    ;
+
+
+
+my_fp_mul my_fp_mul_inst_1(
+    .aclk(aclk),
+    .aresetn(aresetn),
+    .aclken(aclken),
+    .a_in(a_in),
+    .b_in(b_in),
+    .result_out(out_01_A),
+    .result_tvalid(),
+    .result_tuser()
+);
+
+
+
+
+
+
+
 
 endmodule
 

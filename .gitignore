@@ -5,3 +5,9 @@ vivado/**
 !vivado/GP_Plus.ip_user_files/ip/
 !vivado/GP_Plus.ip_user_files/ip/**
 
+
+!vivado/GP_Plus.srcs/
+!vivado/GP_Plus.srcs/sources_1/
+!vivado/GP_Plus.srcs/sources_1/ip/
+!vivado/GP_Plus.srcs/sources_1/ip/**
+
