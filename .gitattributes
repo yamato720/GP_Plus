@@ -1,0 +1,23 @@
+# Normalize line endings and default text handling
+* text=auto eol=lf
+
+# Treat HDL and scripts as text
+*.v text
+*.sv text
+*.vh text
+*.vhd text
+*.tcl text
+*.xdc text
+*.md text
+*.txt text
+
+# Binary files
+*.bit binary
+*.bin binary
+*.mcs binary
+*.dcp binary
+*.wdb binary
+*.wdf binary
+*.pb binary
+*.ltx binary
+*.ip binary
