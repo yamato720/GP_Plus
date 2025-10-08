@@ -93,11 +93,9 @@ always #5 aclk = ~aclk; // 10ns时钟周期
 
 
 
-fp_sum_module fp_sum_module_inst
-#(
-    .latency         (4'd5)
-)
-(
+fp_sum_module #(
+    .latency (4'd5)
+) fp_sum_module_inst (
     .aclk            (aclk            ),
     .aresetn         (aresetn         ),
 

@@ -74,4 +74,15 @@ module fp_dual_input_module
     output  reg     [31:0]  out_16_B    
     
 );
+
+
+
+
+
+
+
+
+
+
+
 endmodule

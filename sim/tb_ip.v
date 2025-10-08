@@ -35,32 +35,42 @@ reg [3 : 0] web;
 reg [31 : 0] addrb;
 reg [31 : 0] dinb;
 wire [31 : 0] doutb;
-wire rsta_busy;
-wire rstb_busy;
+// wire rsta_busy;
+// wire rstb_busy;
+
+integer i;
 
 initial begin
     clka = 0;                            // 10ns时钟周期
     rsta = 0;                            // 复位信号 
-    ena = 0;                             // 使能信号
+    ena = 1;                             // 使能信号
     wea = 4'b0000;                       // 写使能信号，4位表示每个字节的写使能  
-    addra = 32'b0;                       // 地址信号
+    addra = 32'd5;                       // 地址信号
     dina = 32'b0;                        // 输入数据信号
     clkb = 0;                            // 10ns时钟周期
     rstb = 0;                            // 复位信号
-    enb = 0;                             // 使能信号
+    enb = 1;                             // 使能信号
     web = 4'b0000;                       // 写使能信号，4位表示每个字节的写使能
-    addrb = 32'b0;                       // 地址信号
+    addrb = 32'd6;                       // 地址信号
     dinb = 32'b0;                        // 输入数据信号
+    #200;
+    // rsta = 1;                            // 释放复位
+    // rstb = 1;                            // 释放复位
+    // 从第0位到50位，每周期访问一次
+    for (i = 0; i <= 50; i = i + 1) begin
+      addra = i;
+      addrb = i;
+      #10;
+    end
+    // #20 ena = 1; enb = 1; // 同时拉高ena和enb，开启A、B端口的操作
 
-    #20 ena = 1; enb = 1;
+    // #20 wea = 4'b1111; addra = 32'd0; dina = 32'h3f800000; // 写入地址0，数据1.0
+    // #10 wea = 4'b0000; addra = 32'd0; // 停止写入，准备读取地址0
 
-    #20 wea = 4'b1111; addra = 32'd0; dina = 32'h3f800000; // 写入地址0，数据15.9
-    #10 wea = 4'b0000; addra = 32'd0; // 停止写入，准备读取地址0
+    // #20 web = 4'b1111; addrb = 32'd0; dinb = 32'h41400000; // 写入地址0，数据12.0
+    // #10 web = 4'b0000; addrb = 32'd0; // 停止写入，准备读取地址0
 
-    #20 web = 4'b1111; addrb = 32'd0; dinb = 32'h41400000; // 写入地址0，数据22.6
-    #10 web = 4'b0000; addrb = 32'd0; // 停止写入，准备读取地址0
-
-    #50; // 等待仿真结束
+    // #50; // 等待仿真结束
 end
 
 always #5 clka = ~clka; // 10ns时钟周期
@@ -71,7 +81,7 @@ always #5 clkb = ~clkb; // 10ns时钟周期
 
 
 
-bmem_native_data_256KB your_instance_name (
+ram_test ram_test_inst (
   .clka(clka),            // input wire clka
   .rsta(rsta),            // input wire rsta
   .ena(ena),              // input wire ena
